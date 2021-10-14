@@ -33,11 +33,10 @@ public class FantasyTeamApp {
             outputMenu();
             getInput = input.next();
             getInput = getInput.toLowerCase();
-
-
             if (getInput.equals("yes")) {
                 createPlayer();
                 addPlayerToTeam();
+                viewPlayersOnTeam();
 
             } else {
                 keepPrompting = false;
@@ -151,5 +150,42 @@ public class FantasyTeamApp {
         }
     }
 
+    private void displayTeamToViewPlayers() {
+        System.out.println("which team's roster would you like to view?");
+        System.out.println("\t1 -> team1");
+        System.out.println("\t2 -> team2");
+        System.out.println("\t3 -> team3");
+        System.out.println("\t4 -> team4");
+        System.out.println("\t5 -> team5");
+        System.out.println("\tn -> none");
+    }
 
+    private void viewPlayersOnTeam() {
+        displayTeamToViewPlayers();
+        String team = input.next();
+        if (team.equals("1")) {
+            for (String playerName: team1.getRosterList()) {
+                System.out.print(playerName);
+            }
+        } else if (team.equals("2")) {
+            for (String playerName: team2.getRosterList()) {
+                System.out.print(playerName);
+            }
+        } else if (team.equals("3")) {
+            for (String playerName: team3.getRosterList()) {
+                System.out.print(playerName);
+            }
+        } else if (team.equals("4")) {
+            for (String playerName: team4.getRosterList()) {
+                System.out.print(playerName);
+            }
+        } else if (team.equals("5")) {
+            for (String playerName: team5.getRosterList()) {
+                System.out.print(playerName);
+            }
+        }
+    }
 }
+
+
+

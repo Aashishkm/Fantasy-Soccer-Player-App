@@ -2,6 +2,9 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TeamTest {
@@ -75,6 +78,26 @@ class TeamTest {
         assertEquals(player6, teamTest.selectPlayer("6"));
         assertEquals(null, teamTest.selectPlayer("29"));
 
+
+    }
+
+    @Test
+    void testReturnPlayerList() {
+        teamTest.addPlayer(player1);
+        teamTest.addPlayer(player2);
+        teamTest.addPlayer(player3);
+        teamTest.addPlayer(player4);
+        teamTest.addPlayer(player5);
+        teamTest.addPlayer(player6);
+
+        ArrayList<String> rosterList = teamTest.getRosterList();
+        assertTrue(rosterList.get(0) == "1");
+        assertTrue(rosterList.get(1) == "2");
+        assertTrue(rosterList.get(2) == "3");
+        assertTrue(rosterList.get(3) == "4");
+        assertTrue(rosterList.get(4) == "5");
+        assertTrue(rosterList.get(5) == "6");
+        assertFalse(rosterList.get(3) == "1");
 
     }
 

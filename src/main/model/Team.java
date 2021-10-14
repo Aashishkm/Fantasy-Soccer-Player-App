@@ -8,6 +8,7 @@ public class Team {
     public static final int MAX_TEAM_SIZE = 6;
     private String teamName;
     private int teamPoints;
+    private ArrayList<String> rosterList = new ArrayList<String>();
 
     public Team(String teamName, int teamPoints) {
         this.teamName = teamName;
@@ -53,6 +54,16 @@ public class Team {
         return null;
     }
 
+    //modifies: Arraylist<string> rosterlist
+    //effects: returns the
+    public void returnPlayerList() {
+
+        for (Player player: team) {
+            rosterList.add(player.getPlayerName());
+        }
+
+    }
+
     //modifies: this
     //effects: adds team points
     public void setTeamPoints(int teamPoints) {
@@ -72,5 +83,8 @@ public class Team {
         return teamPoints;
     }
 
+    public ArrayList<String> getRosterList() {
+        return rosterList;
+    }
 
 }
