@@ -16,7 +16,6 @@ public class FantasyTeamApp {
     private Team team2 = new Team("team2", 0);
     private Team team3 = new Team("team3", 0);
     private Team team4 = new Team("team4", 0);
-    private Team team5 = new Team("team5", 0);
 
     public FantasyTeamApp() {
 
@@ -37,11 +36,7 @@ public class FantasyTeamApp {
                 createPlayer();
                 addPlayerToTeam();
                 viewPlayersOnTeam();
-                System.out.print("hello");
-                System.out.print(team1.returnPlayerList());
-                System.out.print("hello");
-                System.out.print(team2.returnPlayerList());
-
+                viewPlayersStats();
 
             } else {
                 keepPrompting = false;
@@ -56,7 +51,6 @@ public class FantasyTeamApp {
         team2 = new Team("team2", 0);
         team3 = new Team("team3", 0);
         team4 = new Team("team4", 0);
-        team5 = new Team("team5", 0);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
 
@@ -131,15 +125,14 @@ public class FantasyTeamApp {
     }
 
     private void displayTeams() {
-        System.out.println("which team would you like to add your player too?");
         System.out.println("\t1 -> team1");
         System.out.println("\t2 -> team2");
         System.out.println("\t3 -> team3");
         System.out.println("\t4 -> team4");
-        System.out.println("\t5 -> team5");
     }
 
     private void addPlayerToTeam() {
+        System.out.println("which team would you like to add your player too?");
         displayTeams();
         String teamName = input.next();
         if (teamName.equals("1")) {
@@ -150,8 +143,6 @@ public class FantasyTeamApp {
             team3.addPlayer(player);
         } else if (teamName.equals("4")) {
             team4.addPlayer(player);
-        } else if (teamName.equals("5")) {
-            team5.addPlayer(player);
         }
     }
 
@@ -161,7 +152,6 @@ public class FantasyTeamApp {
         System.out.println("\t2 -> team2");
         System.out.println("\t3 -> team3");
         System.out.println("\t4 -> team4");
-        System.out.println("\t5 -> team5");
         System.out.println("\tn -> none");
     }
 
@@ -170,27 +160,58 @@ public class FantasyTeamApp {
         String team = input.next();
         if (team.equals("1")) {
             for (String playerName: team1.returnPlayerList()) {
-                System.out.print(playerName);
+                System.out.print(playerName + "\n");
             }
         } else if (team.equals("2")) {
             for (String playerName: team2.returnPlayerList()) {
-                System.out.print(playerName);
+                System.out.print(playerName + "\n");
             }
         } else if (team.equals("3")) {
             for (String playerName: team3.returnPlayerList()) {
-                System.out.print(playerName);
+                System.out.print(playerName + "\n");
             }
         } else if (team.equals("4")) {
             for (String playerName: team4.returnPlayerList()) {
-                System.out.print(playerName);
-            }
-        } else if (team.equals("5")) {
-            for (String playerName: team5.returnPlayerList()) {
-                System.out.print(playerName);
+                System.out.print(playerName + "\n");
             }
         }
     }
+
+    private void viewPlayersStats() {
+        System.out.println("would you like to view a player's statistics? (yes or no)");
+        String userInput = input.next();
+        Player thePlayer;
+        if (userInput.equals("yes")) {
+            System.out.println("what is the player's name?");
+            String playerName = input.next();
+            displayTeams();
+            System.out.println("what team is the player on");
+            String team = input.next();
+            if (team.equals("1")) {
+                thePlayer = team1.selectPlayer(playerName);
+                getStats(thePlayer);
+            } else if (team.equals("2")) {
+                thePlayer = team2.selectPlayer(playerName);
+                getStats(thePlayer);
+            } else if (team.equals("3")) {
+                thePlayer = team3.selectPlayer(playerName);
+                getStats(thePlayer);
+            } else if (team.equals("4")) {
+                thePlayer = team4.selectPlayer(playerName);
+                getStats(thePlayer);
+            }
+        }
+    }
+
+    private void getStats(Player player) {
+        System.out.print("Shooting: " + player.getShooting() + "\n");;
+        System.out.print("Pace: " + player.getPace() + "\n");
+        System.out.print("Defending: " + player.getDefending() + "\n");
+        System.out.print("Goals Scored: " + player.getGoalsScored() + "\n");
+    }
+
 }
+
 
 
 
