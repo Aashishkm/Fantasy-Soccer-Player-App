@@ -37,6 +37,11 @@ public class FantasyTeamApp {
                 createPlayer();
                 addPlayerToTeam();
                 viewPlayersOnTeam();
+                System.out.print("hello");
+                System.out.print(team1.returnPlayerList());
+                System.out.print("hello");
+                System.out.print(team2.returnPlayerList());
+
 
             } else {
                 keepPrompting = false;
@@ -164,23 +169,23 @@ public class FantasyTeamApp {
         displayTeamToViewPlayers();
         String team = input.next();
         if (team.equals("1")) {
-            for (String playerName: team1.getRosterList()) {
+            for (String playerName: team1.returnPlayerList()) {
                 System.out.print(playerName);
             }
         } else if (team.equals("2")) {
-            for (String playerName: team2.getRosterList()) {
+            for (String playerName: team2.returnPlayerList()) {
                 System.out.print(playerName);
             }
         } else if (team.equals("3")) {
-            for (String playerName: team3.getRosterList()) {
+            for (String playerName: team3.returnPlayerList()) {
                 System.out.print(playerName);
             }
         } else if (team.equals("4")) {
-            for (String playerName: team4.getRosterList()) {
+            for (String playerName: team4.returnPlayerList()) {
                 System.out.print(playerName);
             }
         } else if (team.equals("5")) {
-            for (String playerName: team5.getRosterList()) {
+            for (String playerName: team5.returnPlayerList()) {
                 System.out.print(playerName);
             }
         }

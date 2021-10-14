@@ -90,7 +90,8 @@ class TeamTest {
         teamTest.addPlayer(player5);
         teamTest.addPlayer(player6);
 
-        ArrayList<String> rosterList = teamTest.getRosterList();
+        ArrayList<String> rosterList = teamTest.returnPlayerList();
+
         assertTrue(rosterList.get(0) == "1");
         assertTrue(rosterList.get(1) == "2");
         assertTrue(rosterList.get(2) == "3");
