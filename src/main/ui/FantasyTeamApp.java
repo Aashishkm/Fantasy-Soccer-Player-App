@@ -93,7 +93,7 @@ public class FantasyTeamApp {
         System.out.println("What is your player's name?");
         playerName = input.next();
         playerName.toLowerCase();
-        this.player = new Player(playerName, 0, 0, 0, 0);
+        this.player = new Player(playerName.toLowerCase(), 0, 0, 0, 0);
         boolean keepGoing = true;
 
         while (keepGoing) {
