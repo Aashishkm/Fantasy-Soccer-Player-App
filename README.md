@@ -22,5 +22,5 @@ User stories:
 
 - As a user, I want to be able to select a team and add a player(s) to that team
 - As a user, I want to be able to select a team and view a list of players on that team
-- As a user, I want to be able to select a player on a team, and add/update statistics for that player
+- As a user, I want to be able to select a player on a team, and view statistics for that player
 - As a user, I want to be able to select a team and add statistics to that team

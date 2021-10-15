@@ -54,7 +54,6 @@ public class Team {
         return null;
     }
 
-    //modifies: Arraylist<string> rosterlist
     //effects: returns the rosterlist of type string of playernames
     public ArrayList<String> returnPlayerList() {
         ArrayList<String> rosterList = new ArrayList<String>();
