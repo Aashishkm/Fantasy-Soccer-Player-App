@@ -61,6 +61,7 @@ public class JsonWriterTest extends JsonTest {
             JsonReader reader = new JsonReader("./data/testWriterGeneralTeam.json");
             t1 = reader.read();
             assertEquals("Liverpool", t1.getTeamName());
+            assertEquals(0, t1.getTeamPoints());
             List<Player> team = t1.getPlayers();
             assertEquals(2, team.size());
             checkPlayer("aashish",90,60,20,4, team.get(0));

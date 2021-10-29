@@ -43,6 +43,7 @@ class JsonReaderTest extends JsonTest {
         try {
             Team t1 = reader.read();
             assertEquals("Manchester United", t1.getTeamName());
+            assertEquals(0, t1.getTeamPoints());
             List<Player> team = t1.getPlayers();
             assertEquals(2, team.size());
             checkPlayer("aashish",0,0,0,0, team.get(0));
