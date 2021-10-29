@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 //Code based off JsonSerializationDemo
+
 public class Team implements Writable {
     private List<Player> team;
     public static final int MAX_TEAM_SIZE = 6;

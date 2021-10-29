@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 
 //Code based off JsonSerializationDemo
 // Represents a reader that reads team from JSON data stored in file
+
 public class JsonReader {
     private String source;
 

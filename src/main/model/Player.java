@@ -5,6 +5,7 @@ import persistence.Writable;
 
 //Comment stuff
 //Code based off JsonSerializationDemo
+
 public class Player implements Writable {
     private String playerName;
     private int pace;
