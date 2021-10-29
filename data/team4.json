@@ -3,9 +3,9 @@
     "teamPoints": 0,
     "team": [{
         "pace": 0,
-        "name": "wewe",
+        "name": "romero",
         "defending": 0,
-        "shooting": 0,
+        "shooting": 55,
         "goalsScored": 0
     }]
 }

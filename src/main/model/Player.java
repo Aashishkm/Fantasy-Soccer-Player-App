@@ -3,7 +3,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-//Comment stuff
+//Class that creates a player, and assigns that player specific attributes
+// such as a name, pace, shooting, defending and goalsScored
 //Code based off JsonSerializationDemo
 
 public class Player implements Writable {
@@ -12,6 +13,10 @@ public class Player implements Writable {
     private int shooting;
     private int defending;
     private int goalsScored;
+
+    //Constructor
+    //Modifies: this
+    //Effects: initialises a player object with values such as name, pace shooting, defending and goalsscored
 
     public Player(String playerName, int pace, int shooting, int defending, int goalsScored) {
         this.playerName = playerName;
@@ -59,6 +64,7 @@ public class Player implements Writable {
     public int getGoalsScored() {
         return goalsScored;
     }
+
 
     @Override
     public JSONObject toJson() {

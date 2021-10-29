@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+//Team class that creates a team from a list of players
 //Code based off JsonSerializationDemo
 
 public class Team implements Writable {
@@ -16,7 +17,10 @@ public class Team implements Writable {
     private String teamName;
     private int teamPoints;
 
-
+    //Constructor
+    //Modifies: this
+    //effects: initialises team initial values (name and points)
+    //also creates/initialises an arraylist of type player that is our "team"
     public Team(String teamName, int teamPoints) {
         this.teamName = teamName;
         this.teamPoints = teamPoints;
