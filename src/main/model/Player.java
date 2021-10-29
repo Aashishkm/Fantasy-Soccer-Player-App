@@ -68,7 +68,6 @@ public class Player implements Writable {
         json.put("defending", defending);
         json.put("goalsScored", goalsScored);
         json.put("shooting", shooting);
-        System.out.print(json);
         return json;
     }
 

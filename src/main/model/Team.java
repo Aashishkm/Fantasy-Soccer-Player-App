@@ -108,7 +108,6 @@ public class Team implements Writable {
         for (Player p1 : team) {
             jsonArray.put(p1.toJson());
         }
-        System.out.print(jsonArray);
         return jsonArray;
     }
 

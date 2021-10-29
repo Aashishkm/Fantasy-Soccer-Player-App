@@ -19,7 +19,6 @@ class JsonReaderTest extends JsonTest {
         try {
 
             Team t1 = reader.read();
-            t1 = reader1.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
