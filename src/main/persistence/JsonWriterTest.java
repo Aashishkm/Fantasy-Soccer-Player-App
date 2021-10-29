@@ -21,9 +21,11 @@ public class JsonWriterTest extends JsonTest {
         try {
             Team t1 = new Team("Liverpool", 0);
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
-            writer.open();
+            JsonWriter writer1 = new JsonWriter("./data/testWriterEmptyTeam.json");
+            writer1.open();
             fail("IOException was expected");
         } catch (IOException e) {
+
             // pass
         }
     }
@@ -31,6 +33,7 @@ public class JsonWriterTest extends JsonTest {
     @Test
     void testWriterEmptyTeam() {
         try {
+
             Team t1 = new Team("Liverpool", 0);
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyTeam.json");
             writer.open();
@@ -42,6 +45,7 @@ public class JsonWriterTest extends JsonTest {
             assertEquals("Liverpool", t1.getTeamName());
             assertEquals(0, t1.getTeamPoints());
             assertEquals(0, t1.getTeamSize());
+            JsonWriter writer1 = new JsonWriter("./data/my\0illegal:fileName.json");
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -66,7 +70,7 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(2, team.size());
             checkPlayer("aashish",90,60,20,4, team.get(0));
             checkPlayer("bob", 99,99,99, 9, team.get(1));
-
+            JsonWriter writer1 = new JsonWriter("./data/my\0illegal:fileName.json");
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
