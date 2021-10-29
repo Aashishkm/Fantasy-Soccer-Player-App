@@ -1,6 +1,11 @@
 package model;
 
-public class Player {
+import org.json.JSONObject;
+import persistence.Writable;
+
+//Comment stuff
+//Code based off JsonSerializationDemo
+public class Player implements Writable {
     private String playerName;
     private int pace;
     private int shooting;
@@ -52,6 +57,18 @@ public class Player {
 
     public int getGoalsScored() {
         return goalsScored;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", playerName);
+        json.put("pace", pace);
+        json.put("defending", defending);
+        json.put("goalsScored", goalsScored);
+        json.put("shooting", shooting);
+        System.out.print(json);
+        return json;
     }
 
 }

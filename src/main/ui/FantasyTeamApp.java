@@ -2,24 +2,63 @@ package ui;
 
 import model.Player;
 import model.Team;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
 //Fantasy soccer team app
 //Ui Code based off TellerApp
+//Code based off JsonSerializationDemo
 public class FantasyTeamApp {
+    private static final String JSON_STORE = "./data/team.json";
+    private static final String JSON_STORE1 = "./data/team2.json";
+    private static final String JSON_STORE2 = "./data/team3.json";
+    private static final String JSON_STORE3 = "./data/team4.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private JsonWriter jsonWriter1;
+    private JsonReader jsonReader1;
+    private JsonWriter jsonWriter2;
+    private JsonReader jsonReader2;
+    private JsonWriter jsonWriter3;
+    private JsonReader jsonReader3;
+
+
     private Scanner input;
     //private int playerNumber = 0;
-    private Player player;
-    private Team team1 = new Team("team1", 0);
-    private Team team2 = new Team("team2", 0);
-    private Team team3 = new Team("team3", 0);
-    private Team team4 = new Team("team4", 0);
+    private static final String TEAM_1_NAME = "Manchester United";
+    private static final String TEAM_2_NAME = "Tottenham Hotspur";
+    private static final String TEAM_3_NAME = "Manchester City";
+    private static final String TEAM_4_NAME = "Liverpool";
 
-    //effects: run fantasy team application
-    public FantasyTeamApp() {
+    private Player player;
+    private Team team1;
+    private Team team2;
+    private Team team3;
+    private Team team4;
+
+    //effects: run fantasy team application and constructs teams
+    public FantasyTeamApp() throws FileNotFoundException {
+        //team1 = new Team("Manchester United", 0);
+        // team2 = new Team("Tottenham Hotspur", 0);
+        //team3 = new Team("Manchester City", 0);
+        //team4 = new Team("Liverpool", 0);
+
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter1 = new JsonWriter(JSON_STORE1);
+        jsonReader1 = new JsonReader(JSON_STORE1);
+        jsonWriter2 = new JsonWriter(JSON_STORE2);
+        jsonReader2 = new JsonReader(JSON_STORE2);
+        jsonWriter3 = new JsonWriter(JSON_STORE3);
+        jsonReader3 = new JsonReader(JSON_STORE3);
+
         runFantasyTeam();
     }
 
@@ -47,10 +86,10 @@ public class FantasyTeamApp {
     //Modifies: this
     //effects: initializes teams
     private void teamInit() {
-        team1 = new Team("team1", 0);
-        team2 = new Team("team2", 0);
-        team3 = new Team("team3", 0);
-        team4 = new Team("team4", 0);
+        team1 = new Team(TEAM_1_NAME, 0);
+        team2 = new Team(TEAM_2_NAME, 0);
+        team3 = new Team(TEAM_3_NAME, 0);
+        team4 = new Team(TEAM_4_NAME, 0);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
 
@@ -65,6 +104,8 @@ public class FantasyTeamApp {
         System.out.println("\tp -> View a player's statistics");
         System.out.println("\tup -> update a player's statistics");
         System.out.println("\tut -> update a team's statistics");
+        System.out.println("\ts -> save teams to file");
+        System.out.println("\tl -> load teams from file");
 
         System.out.println("\tq -> quit");
     }
@@ -83,6 +124,10 @@ public class FantasyTeamApp {
             updatePlayersStats();
         } else if (getInput.equals("ut")) {
             updateTeamStatistics();
+        } else if (getInput.equals("s")) {
+            saveWorkRoom();
+        } else if (getInput.equals("l")) {
+            loadWorkRoom();
         }
     }
 
@@ -92,7 +137,7 @@ public class FantasyTeamApp {
         String playerName = null;
         System.out.println("What is your player's name?");
         playerName = input.next();
-        playerName.toLowerCase();
+        //playerName.toLowerCase();
         this.player = new Player(playerName.toLowerCase(), 0, 0, 0, 0);
         boolean keepGoing = true;
 
@@ -187,10 +232,10 @@ public class FantasyTeamApp {
 
     //effects: display menu of teams to select from
     private void displayTeams() {
-        System.out.println("\t1 -> team1");
-        System.out.println("\t2 -> team2");
-        System.out.println("\t3 -> team3");
-        System.out.println("\t4 -> team4");
+        System.out.println("\t1 -> Manchester United");
+        System.out.println("\t2 -> Tottenham Hotspur");
+        System.out.println("\t3 -> Manchester City");
+        System.out.println("\t4 -> Liverpool");
         System.out.println("\tn -> none");
     }
 
@@ -200,19 +245,20 @@ public class FantasyTeamApp {
         displayTeams();
         String team = input.next();
         if (team.equals("1")) {
-            for (String playerName: team1.returnPlayerList()) {
+
+            for (String playerName : team1.returnPlayerList()) {
                 System.out.print(playerName + "\n");
             }
         } else if (team.equals("2")) {
-            for (String playerName: team2.returnPlayerList()) {
+            for (String playerName : team2.returnPlayerList()) {
                 System.out.print(playerName + "\n");
             }
         } else if (team.equals("3")) {
-            for (String playerName: team3.returnPlayerList()) {
+            for (String playerName : team3.returnPlayerList()) {
                 System.out.print(playerName + "\n");
             }
         } else if (team.equals("4")) {
-            for (String playerName: team4.returnPlayerList()) {
+            for (String playerName : team4.returnPlayerList()) {
                 System.out.print(playerName + "\n");
             }
         }
@@ -227,7 +273,7 @@ public class FantasyTeamApp {
 
     //effects: method that prints out a players statistics
     private void getStats(Player player) {
-        System.out.print("Shooting: " + player.getShooting() + "\n");;
+        System.out.print("Shooting: " + player.getShooting() + "\n");
         System.out.print("Pace: " + player.getPace() + "\n");
         System.out.print("Defending: " + player.getDefending() + "\n");
         System.out.print("Goals Scored: " + player.getGoalsScored() + "\n");
@@ -271,7 +317,7 @@ public class FantasyTeamApp {
         }
     }
 
-    //modofies: this
+    //modifies: this
     //effects: For a given team, updates a teams win statistics, and prints out their current points
     private void updateTeamStatistics() {
         boolean keepGoing = true;
@@ -306,6 +352,106 @@ public class FantasyTeamApp {
         outcome.toLowerCase();
         if (outcome.equals("win")) {
             team.setTeamPoints(3);
+        }
+    }
+
+    // EFFECTS: saves team1s information to file
+    private void saveWorkRoom() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(team1);
+            jsonWriter.close();
+            System.out.println("Saved " + team1.getTeamName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+        saveWorkRoom1();
+        saveWorkRoom2();
+        saveWorkRoom3();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads team1 info from file
+    private void loadWorkRoom() {
+        try {
+            team1 = jsonReader.read();
+            System.out.println("Loaded " + team1.getTeamName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+        loadWorkRoom1();
+        loadWorkRoom2();
+        loadWorkRoom3();
+
+    }
+
+    // EFFECTS: saves team2s information to file
+    private void saveWorkRoom1() {
+        try {
+            jsonWriter1.open();
+            jsonWriter1.write(team2);
+            jsonWriter1.close();
+
+            System.out.println("Saved " + team2.getTeamName() + " to " + JSON_STORE1);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE1);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads team2 info from file
+    private void loadWorkRoom1() {
+        try {
+            team2 = jsonReader1.read();
+            System.out.println("Loaded " + team2.getTeamName() + " from " + JSON_STORE1);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE1);
+        }
+    }
+
+    // EFFECTS: saves team3s information to file
+    private void saveWorkRoom2() {
+        try {
+            jsonWriter2.open();
+            jsonWriter2.write(team3);
+            jsonWriter2.close();
+            System.out.println("Saved " + team3.getTeamName() + " to " + JSON_STORE2);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE2);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads team3 info from file
+    private void loadWorkRoom2() {
+        try {
+            team3 = jsonReader2.read();
+            System.out.println("Loaded " + team3.getTeamName() + " from " + JSON_STORE2);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE2);
+        }
+    }
+
+    // EFFECTS: saves team4s information to file
+    private void saveWorkRoom3() {
+        try {
+            jsonWriter3.open();
+            jsonWriter3.write(team4);
+            jsonWriter3.close();
+            System.out.println("Saved " + team4.getTeamName() + " to " + JSON_STORE3);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE3);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads team4 info from file
+    private void loadWorkRoom3() {
+        try {
+            team4 = jsonReader3.read();
+            System.out.println("Loaded " + team4.getTeamName() + " from " + JSON_STORE3);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE3);
         }
     }
 

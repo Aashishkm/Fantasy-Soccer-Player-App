@@ -19,8 +19,10 @@ I am very interested in the project because it relates to my passions, and I thi
 - Furthermore, as someone who is passionate about athletics in general, this app is very transferable and can apply to other sports as well. 
  
 User stories: 
-
-- As a user, I want to be able to select a team and add a player(s) to that team
+- As a user, I want to be able to create a player
+- As a user, I want to be able to select a team, add a player(s) to that team
 - As a user, I want to be able to select a team and view a list of players on that team
 - As a user, I want to be able to select a player on a team, and view statistics for that player
 - As a user, I want to be able to select a team and add statistics to that team
+- As a user, I want to be able to save my teams and players to file
+- As a user, I want to be able to be able to load my player and team information from file 
