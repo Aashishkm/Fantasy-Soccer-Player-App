@@ -1,0 +1,11 @@
+{
+    "teamName": "Liverpool",
+    "teamPoints": 0,
+    "team": [{
+        "pace": 0,
+        "name": "wewe",
+        "defending": 0,
+        "shooting": 0,
+        "goalsScored": 0
+    }]
+}

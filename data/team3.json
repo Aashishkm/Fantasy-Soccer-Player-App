@@ -1,0 +1,11 @@
+{
+    "teamName": "Manchester City",
+    "teamPoints": 0,
+    "team": [{
+        "pace": 0,
+        "name": "mchd",
+        "defending": 0,
+        "shooting": 0,
+        "goalsScored": 0
+    }]
+}

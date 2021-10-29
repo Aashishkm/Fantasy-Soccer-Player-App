@@ -1,0 +1,20 @@
+{
+    "teamName": "Liverpool",
+    "teamPoints": 0,
+    "team": [
+        {
+            "pace": 90,
+            "name": "aashish",
+            "defending": 20,
+            "shooting": 60,
+            "goalsScored": 4
+        },
+        {
+            "pace": 99,
+            "name": "bob",
+            "defending": 99,
+            "shooting": 99,
+            "goalsScored": 9
+        }
+    ]
+}
