@@ -1,11 +1,5 @@
 {
     "teamName": "Liverpool",
     "teamPoints": 0,
-    "team": [{
-        "pace": 0,
-        "name": "romero",
-        "defending": 0,
-        "shooting": 55,
-        "goalsScored": 0
-    }]
+    "team": []
 }

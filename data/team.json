@@ -1,11 +1,5 @@
 {
     "teamName": "Manchester United",
     "teamPoints": 0,
-    "team": [{
-        "pace": 33,
-        "name": "aashish",
-        "defending": 55,
-        "shooting": 59,
-        "goalsScored": 9
-    }]
+    "team": []
 }
