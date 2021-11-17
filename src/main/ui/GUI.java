@@ -122,6 +122,7 @@ public class GUI extends JFrame {
         background.add(left);
     }
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void createPlayerMenu() {
         createPlayerMenu = new JInternalFrame("Create a Player", true, true, true, false);
         initPlayerMenuLabelsAndButtons();
