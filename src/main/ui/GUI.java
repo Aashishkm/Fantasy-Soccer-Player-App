@@ -75,6 +75,8 @@ public class GUI extends JFrame {
     private JInternalFrame createTeam3Roster;
     private JInternalFrame createTeam4Roster;
 
+    private JInternalFrame savedImage;
+
     public GUI() {
         background = new JDesktopPane();
 
@@ -148,7 +150,6 @@ public class GUI extends JFrame {
         createPlayerMenu.setLocation((background.getWidth() / 2) - 190, 0);
         createPlayerMenu.setVisible(true);
         background.add(createPlayerMenu);
-
     }
 
     public void initPlayerMenuLabelsAndButtons() {
@@ -228,6 +229,7 @@ public class GUI extends JFrame {
         ArrayList<String> firstTeam = team3.returnPlayerList();
         for (String p : firstTeam) {
             createTeam3Roster.add(new JButton(p));
+
         }
         createTeam3Roster.setSize(ROSTER_PANEL_WIDTH, ROSTER_PANEL_HEIGHT);
         createTeam3Roster.setLocation((background.getWidth() / 2) - 100, 200);
@@ -403,6 +405,7 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             saveWorkRoom();
+            savedPanel();
         }
     }
 
@@ -414,8 +417,23 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             loadWorkRoom();
+
         }
     }
+
+    private void savedPanel() {
+        savedImage = new JInternalFrame("Saved Player Information!", true, true, true, false);
+        savedImage.setLocation(200, 60);
+        savedImage.setSize(600,500);
+        savedImage.add(new JButton(new ImageIcon("src/main/Images/saved.png")));
+        //validate();
+        savedImage.setVisible(true);
+        background.add(savedImage);
+
+
+    }
+
+
 
     private void saveWorkRoom() {
         try {
@@ -515,6 +533,7 @@ public class GUI extends JFrame {
             System.out.println("Unable to read from file: " + JSON_STORE3);
         }
     }
+
 
     public static void main(String[] args)  {
         new GUI();
