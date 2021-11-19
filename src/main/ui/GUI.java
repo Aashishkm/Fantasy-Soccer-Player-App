@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//GUI code based of off Alarm System
+//GUI code based of off the Alarm System
 //Code based off JsonSerializationDemo
 //Fantasy soccer team app
 public class GUI extends JFrame {
