@@ -1,5 +1,11 @@
 {
     "teamName": "Manchester City",
     "teamPoints": 0,
-    "team": []
+    "team": [{
+        "pace": 90,
+        "name": "Riley",
+        "defending": 99,
+        "shooting": 85,
+        "goalsScored": 3
+    }]
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 //GUI code based of off Alarm System
 //Code based off JsonSerializationDemo
+//Fantasy soccer team app
 public class GUI extends JFrame {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
@@ -77,6 +78,8 @@ public class GUI extends JFrame {
 
     private JInternalFrame savedImage;
 
+    //modifies: this
+    //effects: run fantasy team application and constructs teams
     public GUI() {
         background = new JDesktopPane();
 
@@ -101,6 +104,8 @@ public class GUI extends JFrame {
 
     }
 
+    //Modifies: this
+    //effects: initializes teams
     public void teamInit() {
         team1 = new Team(TEAM_1_NAME, 0);
         team2 = new Team(TEAM_2_NAME, 0);
@@ -108,7 +113,8 @@ public class GUI extends JFrame {
         team4 = new Team(TEAM_4_NAME, 0);
     }
 
-
+    //modifies: this
+    //effects: initializes and creates JFraame main menu and adds it too desktop pane
     public void leftMenu() {
         JInternalFrame left = new JInternalFrame();
         left.setLayout(new BoxLayout(left.getContentPane(), BoxLayout.Y_AXIS));
@@ -124,7 +130,8 @@ public class GUI extends JFrame {
         background.add(left);
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    //modifies: this
+    //effects: creates player menu JFrame and its is to desktop pane
     public void createPlayerMenu() {
         createPlayerMenu = new JInternalFrame("Create a Player", true, true, true, false);
         initPlayerMenuLabelsAndButtons();
@@ -140,11 +147,7 @@ public class GUI extends JFrame {
         createPlayerMenu.add(goalsScored);
         createPlayerMenu.add(goalsScoredInput);
         createPlayerMenu.add(enter);
-        createPlayerMenu.add(playerMenuMessage);
-        createPlayerMenu.add(playerMenu1);
-        createPlayerMenu.add(playerMenu2);
-        createPlayerMenu.add(playerMenu3);
-        createPlayerMenu.add(playerMenu4);
+        addTeamButtons();
         pack();
         createPlayerMenu.setSize(PLAYER_PANEL_WIDTH, PLAYER_PANEL_HEIGHT);
         createPlayerMenu.setLocation((background.getWidth() / 2) - 190, 0);
@@ -152,6 +155,18 @@ public class GUI extends JFrame {
         background.add(createPlayerMenu);
     }
 
+    //modifies: this
+    //effects: adds team buttons to menu
+    public void addTeamButtons() {
+        createPlayerMenu.add(playerMenuMessage);
+        createPlayerMenu.add(playerMenu1);
+        createPlayerMenu.add(playerMenu2);
+        createPlayerMenu.add(playerMenu3);
+        createPlayerMenu.add(playerMenu4);
+    }
+
+    //modifies: this
+    //effects: initializes labels and buttons for player menu
     public void initPlayerMenuLabelsAndButtons() {
         playerMenuMessage = new Label("Select a team to add you player too: ");
         pace = new Label("Enter pace:");
@@ -171,6 +186,8 @@ public class GUI extends JFrame {
         enter = new JButton(new GUI.EnterAction());
     }
 
+    //modifies: this
+    //effects: initializes labels and buttons for roster menu
     public void initRosterMenuLabelsAndButtons() {
         rosterMenuMessage = new Label("Select a team");
         rosterMenu1 = new JButton(new GUI.Roster1Action());
@@ -180,6 +197,8 @@ public class GUI extends JFrame {
 
     }
 
+    //modifies: this
+    //effects: creates roster menu JFrame and its is to desktop pane
     public void createRosterMenu() {
         createRosterMenu = new JInternalFrame("Select a Team", true, true, true, false);
         initRosterMenuLabelsAndButtons();
@@ -197,6 +216,8 @@ public class GUI extends JFrame {
 
     }
 
+    //modifies: this
+    //effects: creates roster1 JFrame and its is to desktop pane
     public void createTeam1Roster() {
         createTeam1Roster = new JInternalFrame("Roster", true, true, true, false);
         createTeam1Roster.setLayout(new GridLayout(3, 2));
@@ -210,6 +231,8 @@ public class GUI extends JFrame {
         background.add(createTeam1Roster);
     }
 
+    //modifies: this
+    //effects: creates roster2 JFrame and its is to desktop pane
     public void createTeam2Roster() {
         createTeam2Roster = new JInternalFrame("Roster", true, true, true, false);
         createTeam2Roster.setLayout(new GridLayout(3, 2));
@@ -223,6 +246,8 @@ public class GUI extends JFrame {
         background.add(createTeam2Roster);
     }
 
+    //modifies: this
+    //effects: creates roster3 JFrame and its is to desktop pane
     public void createTeam3Roster() {
         createTeam3Roster = new JInternalFrame("Roster", true, true, true, false);
         createTeam3Roster.setLayout(new GridLayout(3, 2));
@@ -237,6 +262,8 @@ public class GUI extends JFrame {
         background.add(createTeam3Roster);
     }
 
+    //modifies: this
+    //effects: creates roster4 JFrame and its is to desktop pane
     public void createTeam4Roster() {
         createTeam4Roster = new JInternalFrame("Roster", true, true, true, false);
         createTeam4Roster.setLayout(new GridLayout(3, 2));
@@ -251,6 +278,7 @@ public class GUI extends JFrame {
     }
 
 
+    //effects: Action event for Roster Button
     private class ViewRosterAction extends AbstractAction {
         ViewRosterAction() {
             super("View Roster");
@@ -264,7 +292,7 @@ public class GUI extends JFrame {
 
     }
 
-
+    //effects: Action event for create player Button
     private class CreatePlayerAction extends AbstractAction {
         CreatePlayerAction() {
             super("Create Player");
@@ -278,7 +306,8 @@ public class GUI extends JFrame {
 
     }
 
-
+    //requires: user input for pace, shooting and defending to be from 0-99
+    //effects: Action event for enter Button in player menu
     private class EnterAction extends AbstractAction {
         EnterAction() {
             super("enter");
@@ -296,7 +325,7 @@ public class GUI extends JFrame {
         }
     }
 
-
+    //effects: Action event for Team 1 Button in create player menu
     private class Team1Action extends AbstractAction {
         Team1Action() {
             super("Manchester United");
@@ -305,11 +334,12 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             team1.addPlayer(player);
-            System.out.print("Added Player");
+            //System.out.print("Added Player");
             createPlayerMenu.setVisible(false);
         }
     }
 
+    //effects: Action event for Team2 Button in create player menu
     private class Team2Action extends AbstractAction {
         Team2Action() {
             super("Tottenham Hotspur");
@@ -318,11 +348,12 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             team2.addPlayer(player);
-            System.out.print("Added Player");
+            //System.out.print("Added Player");
             createPlayerMenu.setVisible(false);
         }
     }
 
+    //effects: Action event for Team3 Button in create player menu
     private class Team3Action extends AbstractAction {
         Team3Action() {
             super("Manchester City");
@@ -331,11 +362,12 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             team3.addPlayer(player);
-            System.out.print("Added Player");
+            //System.out.print("Added Player");
             createPlayerMenu.setVisible(false);
         }
     }
 
+    //effects: Action event for Team4 Button in create player menu
     private class Team4Action extends AbstractAction {
         Team4Action() {
             super("Liverpool");
@@ -344,11 +376,12 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             team4.addPlayer(player);
-            System.out.print("Added Player");
+            //System.out.print("Added Player");
             createPlayerMenu.setVisible(false);
         }
     }
 
+    //effects: Action event for Team1 Button in roster menu
     private class Roster1Action extends AbstractAction {
         Roster1Action() {
             super("Manchester United");
@@ -361,6 +394,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //effects: Action event for Team2 Button in roster menu
     private class Roster2Action extends AbstractAction {
         Roster2Action() {
             super("Tottenham Hotspur");
@@ -373,6 +407,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //effects: Action event for Team3 Button in roster menu
     private class Roster3Action extends AbstractAction {
         Roster3Action() {
             super("Manchester City");
@@ -385,6 +420,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //effects: Action event for Team4 Button in roster menu
     private class Roster4Action extends AbstractAction {
         Roster4Action() {
             super("Liverpool");
@@ -397,6 +433,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //effects: Action event for Save Player Information Button
     private class SaveAction extends AbstractAction {
         SaveAction() {
             super("Save Player Information");
@@ -409,6 +446,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //effects: Action event for Load Player Information Button
     private class LoadAction extends AbstractAction {
         LoadAction() {
             super("Load Player Information");
@@ -421,6 +459,8 @@ public class GUI extends JFrame {
         }
     }
 
+    //modifies: this
+    //effects: create a JInternalFrame for the visual component(image) and ats it to desktop pane
     private void savedPanel() {
         savedImage = new JInternalFrame("Saved Player Information!", true, true, true, false);
         savedImage.setLocation(200, 60);
@@ -434,7 +474,7 @@ public class GUI extends JFrame {
     }
 
 
-
+    // EFFECTS: saves team1s information to file
     private void saveWorkRoom() {
         try {
             jsonWriter.open();
@@ -534,7 +574,7 @@ public class GUI extends JFrame {
         }
     }
 
-
+    //main method that runs everything
     public static void main(String[] args)  {
         new GUI();
     }
