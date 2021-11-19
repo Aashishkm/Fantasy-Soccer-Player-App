@@ -26,3 +26,7 @@ User stories:
 - As a user, I want to be able to select a team and add statistics to that team
 - As a user, I want to be able to save my teams and players to file
 - As a user, I want to be able to be able to load my player and team information from file 
+
+GUI User Stories:
+- As a user, I want to be able to add multiple players to teams
+- As a user I want to be able to save and load the state of the application
