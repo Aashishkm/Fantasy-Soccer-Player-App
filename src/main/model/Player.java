@@ -5,7 +5,7 @@ import persistence.Writable;
 
 //Class that creates a player, and assigns that player specific attributes
 // such as a name, pace, shooting, defending and goalsScored
-//Code based off JsonSerializationDemo
+//Code based off JsonSerializationDemo and Alarm System
 
 public class Player implements Writable {
     private String playerName;

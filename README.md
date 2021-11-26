@@ -30,3 +30,31 @@ User stories:
 GUI User Stories:
 - As a user, I want to be able to add multiple players to teams
 - As a user I want to be able to save and load the state of the application
+
+Phase 4 Task 2:
+
+Log:
+
+Fri Nov 26 01:24:07 PST 2021
+
+Added player to Team
+
+Fri Nov 26 01:24:10 PST 2021
+
+Added player to Team
+
+Fri Nov 26 01:24:15 PST 2021
+
+Added player to Team
+
+Fri Nov 26 01:24:19 PST 2021
+
+Added player to Team
+
+Fri Nov 26 01:24:23 PST 2021
+
+Added player to Team
+
+Fri Nov 26 01:24:26 PST 2021
+
+Added player to Team

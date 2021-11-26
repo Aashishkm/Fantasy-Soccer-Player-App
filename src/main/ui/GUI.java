@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.Player;
 import model.Team;
 import persistence.JsonReader;
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 //GUI code based of off the Alarm System
-//Code based off JsonSerializationDemo
+//Code also based off JsonSerializationDemo
 //Fantasy soccer team app
 public class GUI extends JFrame {
     private static final int WIDTH = 800;
@@ -82,7 +83,6 @@ public class GUI extends JFrame {
     //effects: run fantasy team application and constructs teams
     public GUI() {
         background = new JDesktopPane();
-
         setContentPane(background);
 
         setTitle("CPSC 210 Project: Fantasy Team App ");
@@ -100,7 +100,6 @@ public class GUI extends JFrame {
         jsonReader2 = new JsonReader(JSON_STORE2);
         jsonWriter3 = new JsonWriter(JSON_STORE3);
         jsonReader3 = new JsonReader(JSON_STORE3);
-
 
     }
 
@@ -123,7 +122,7 @@ public class GUI extends JFrame {
         left.add(new JButton(new ViewRosterAction()));
         left.add(new JButton(new SaveAction()));
         left.add(new JButton(new LoadAction()));
-
+        left.add(new JButton(new QuitAction()));
         pack();
         left.setVisible(true);
         left.pack();
@@ -466,11 +465,27 @@ public class GUI extends JFrame {
         savedImage.setLocation(200, 60);
         savedImage.setSize(600,500);
         savedImage.add(new JButton(new ImageIcon("src/main/Images/saved.png")));
+        //image taken from: https://www.flaticon.com/premium-icon/saved_2731143
         //validate();
         savedImage.setVisible(true);
         background.add(savedImage);
 
 
+    }
+
+    //effects:action event for quit button
+    private class QuitAction extends AbstractAction {
+        QuitAction() {
+            super("Quit");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.print("Log:" + "\n");
+            LogPrinter lp = new ConsolePrinter();
+            lp.printLog(EventLog.getInstance());
+            System.exit(0);
+        }
     }
 
 
@@ -573,6 +588,7 @@ public class GUI extends JFrame {
             System.out.println("Unable to read from file: " + JSON_STORE3);
         }
     }
+
 
     //main method that runs everything
     public static void main(String[] args)  {

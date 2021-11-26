@@ -1,5 +1,11 @@
 {
     "teamName": "Tottenham Hotspur",
     "teamPoints": 0,
-    "team": []
+    "team": [{
+        "pace": 0,
+        "name": "b",
+        "defending": 0,
+        "shooting": 0,
+        "goalsScored": 0
+    }]
 }

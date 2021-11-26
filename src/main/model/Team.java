@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 //Team class that creates a team from a list of players
-//Code based off JsonSerializationDemo
+//Code based off JsonSerializationDemo and Alarm System
 
 public class Team implements Writable {
     private List<Player> team;
@@ -32,7 +32,7 @@ public class Team implements Writable {
     public boolean addPlayer(Player playerToAdd) {
 
         if (team.size() < MAX_TEAM_SIZE) {
-
+            EventLog.getInstance().logEvent(new Event("Added player to Team "));
             team.add(playerToAdd);
 
             return true;
@@ -46,6 +46,7 @@ public class Team implements Writable {
     public boolean removePlayer(String playerNameToRemove) {
         for (Player player: team) {
             if (player.getPlayerName().equals(playerNameToRemove)) {
+                EventLog.getInstance().logEvent(new Event("Removed player from Team "));
                 team.remove(player);
                 return true;
             }
@@ -54,7 +55,6 @@ public class Team implements Writable {
     }
 
     //requires: non-empty list of type player, playerName
-    //modifies: this
     //effects: selects a player with the respective name
     public Player selectPlayer(String playerNameToSelect) {
         for (Player player: team) {
