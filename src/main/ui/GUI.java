@@ -473,7 +473,7 @@ public class GUI extends JFrame {
 
     }
 
-    //effects:action event for quit button
+    //effects: Action event for quit button
     private class QuitAction extends AbstractAction {
         QuitAction() {
             super("Quit");

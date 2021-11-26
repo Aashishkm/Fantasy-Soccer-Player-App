@@ -58,3 +58,19 @@ Added player to Team
 Fri Nov 26 01:24:26 PST 2021
 
 Added player to Team
+
+
+Phase 4 Task 3:
+
+Overall, I really enjoyed this process and I thought it was a great learning experience. If I had more time to work on my project, 
+I would split up my classes better - split up the GUI so that it is not as long, 
+and do a similar thing with my console class. Furthermore, 
+I would add more methods and functionality to my programs such as being able to remove players
+or being able to select predetermined players to add to a team. Overall though, looking at the design from my UML diagram,
+other than splitting up some of my classes to make them clearer, 
+I think that UML is pretty clear and succinct, and as a result, I probably
+wouldn't change anything else. 
+
+UML changes in point form:
+
+- split up my GUI class
