@@ -1,4 +1,5 @@
-# My Fantasy Sports team application
+# Fantasy Sports team application
+# Aashish Mehra
 ## CPSC 210 ##
 
 
